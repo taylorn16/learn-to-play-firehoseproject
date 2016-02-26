@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Learn To Play | The Best Online Music Teachers & Lessons" %></title>
 
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Lato:100,400,700,400italic' %>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -16,18 +17,27 @@
     <div class="top-bar">
       <div class="row">
         <div class="small-12 columns">
-          <div class="top-bar-left">
+          <div class="top-bar-title">
+            <span data-responsive-toggle="main-nav" data-hide-for="medium">
+              <span class="menu-icon dark" data-toggle></span>
+            </span>
             <ul class="menu">
-              <li class="menu-text">Learn To Play</li>
-              <li><a href="#">Link One</a></li>
-              <li><a href="#">Link Two</a></li>
+              <li class="menu-text brand"><i class="fi-music"></i> Learn to Play</li>
             </ul>
           </div>
-          <div class="top-bar-right">
-            <ul class="menu">
-              <li><a href="#">RLink One</a></li>
-              <li><a href="#">RLink Two</a></li>
-            </ul>
+          <div id="main-nav">
+            <div class="top-bar-left">
+              <ul class="menu">
+                <li><a href="#">Link One</a></li>
+                <li><a href="#">Link Two</a></li>
+              </ul>
+            </div>
+            <div class="top-bar-right">
+              <ul class="menu">
+                <li><a href="#">RLink One</a></li>
+                <li><a href="#">RLink Two</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

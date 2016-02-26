@@ -10,6 +10,16 @@
  *
  *= require_self
  *= require foundation_and_overrides
+ *= require foundation-icons
 
  *= require_tree .
  */
+
+body {
+  font-family: 'Lato', Arial, sans-serif;
+}
+
+.menu-text.brand {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

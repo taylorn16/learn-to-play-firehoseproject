@@ -52,3 +52,4 @@ end
 
 # Foundation Zurb
 gem 'foundation-rails'
+gem 'foundation-icons-sass-rails'
