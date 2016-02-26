@@ -23,3 +23,16 @@ body {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+
+.hero {
+  background: url('guitar2.jpg') center center no-repeat;
+  background-size: cover;
+  padding: 5em 0;
+  color: white;
+  margin-bottom: 1.5em;
+
+  .overlay {
+    padding: 2em 1em;
+    border-radius: 1em;
+  }
+}
