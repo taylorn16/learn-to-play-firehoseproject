@@ -53,3 +53,9 @@ end
 # Foundation Zurb
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
+
+# User auth
+gem 'devise'
+
+# Simple form
+gem 'simple_form'

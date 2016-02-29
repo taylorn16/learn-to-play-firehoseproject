@@ -19,9 +19,12 @@ body {
   font-family: 'Lato', Arial, sans-serif;
 }
 
-.menu-text.brand {
+.brand {
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  a {
+    color: #0a0a0a;
+  }
 }
 
 .hero {
@@ -35,4 +38,9 @@ body {
     padding: 2em 1em;
     border-radius: 1em;
   }
+}
+
+
+.callout.form {
+  margin-top: 2em;
 }
