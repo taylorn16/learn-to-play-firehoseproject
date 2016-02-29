@@ -2,6 +2,7 @@ class Course < ActiveRecord::Base
 
   # Database relationships
   belongs_to :user
+  has_many :sections
 
   # Validations
   validates :title, presence: true, length: {minimum: 10, maximum: 160}

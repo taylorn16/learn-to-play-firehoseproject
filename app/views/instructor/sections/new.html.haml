@@ -1,0 +1,8 @@
+.row
+  .small-12.medium-8.medium-offset-2.columns
+    .callout.form
+      %h3 Create New Section
+      %hr
+      = simple_form_for(@section, :url => instructor_course_sections_path) do |f|
+        = f.input :title
+        = f.submit "Create Section", :class => 'button'

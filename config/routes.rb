@@ -7,7 +7,9 @@ LearnToPlay::Application.routes.draw do
 
   namespace :instructor do
     # Directs /instructor/courses/* to Instructor::CoursesController
-    resources :courses, :only => [:new, :create, :show]
+    resources :courses, :only => [:new, :create, :show] do
+      resources :sections, :only => [:new, :create]
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
