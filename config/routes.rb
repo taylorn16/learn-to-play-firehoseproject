@@ -3,6 +3,11 @@ LearnToPlay::Application.routes.draw do
   devise_for :users
   root 'static_pages#index'
 
+  namespace :instructor do
+    # Directs /instructor/courses/* to Instructor::CoursesController
+    resources :courses, :only => [:new, :create, :show]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

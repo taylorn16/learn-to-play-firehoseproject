@@ -59,3 +59,6 @@ gem 'devise'
 
 # Simple form
 gem 'simple_form'
+
+# Try out HAML templating
+gem 'haml'

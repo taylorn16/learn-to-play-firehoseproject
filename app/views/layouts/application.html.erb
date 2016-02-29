@@ -42,8 +42,9 @@
           <div id="main-nav">
             <div class="top-bar-left">
               <ul class="menu">
-                <li><a href="#">Link One</a></li>
-                <li><a href="#">Link Two</a></li>
+                <% if user_signed_in? %>
+                  <li><%= link_to "Teach A Course", new_instructor_course_path %></li>
+                <% end %>
               </ul>
             </div>
             <div class="top-bar-right">
