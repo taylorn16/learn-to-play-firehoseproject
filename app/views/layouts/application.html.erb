@@ -59,7 +59,11 @@
                           <i class="fi-power"></i> Log out
                         <% end %>
                       </li>
-                      <li><a href="#">My Profile</a></li>
+                      <li>
+                        <%= link_to('#') do %>
+                          <i class="fi-widget"></i> Account
+                        <% end %>
+                      </li>
                     </ul>
                   </li>
                 <% else %>

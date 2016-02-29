@@ -1,0 +1,21 @@
+.row
+  .small-12.columns
+    %br
+    %h2= @course.title
+    %br
+
+  .small-12.medium-3.columns.course-details
+    %h5.subheader Course Details
+    %ul.vertical.menu
+      %li= "Cost: #{number_to_currency(@course.cost)}"
+      %li= "Duration: " + ""
+      %li= "Taught by: #{@course.user.email}"
+    - if current_user && current_user == @course.user
+      %hr
+      .text-center
+        = link_to instructor_course_path(@course), :class => 'small button' do
+          %i.fi-torso-business
+          Course Admin
+
+  .small-12.medium-9.columns.course-description
+    %p= @course.description
