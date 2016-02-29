@@ -14,6 +14,15 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require jquery.stickyfooter
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+// $(function() {
+//   $('footer').stickyFooter({
+//     content: '#page',
+//     frame: 'body',
+//     class: 'sticky-footer'
+//   });
+// });
