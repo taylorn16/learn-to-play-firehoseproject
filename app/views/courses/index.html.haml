@@ -1,0 +1,14 @@
+.row
+  .small-12.columns
+    %h1.text-center Learn Something Today
+    %br
+    - @courses.each do |course|
+      .media-object
+        .media-object-section.middle
+          .thumbnail
+            = image_tag "http://placehold.it/150x150"
+        .media-object-section
+          %h4= course.title
+          %p= course.description
+          %p
+            = link_to 'Enroll Now', course_path(course), :class => 'large button'
