@@ -62,3 +62,6 @@ gem 'simple_form'
 
 # Try out HAML templating
 gem 'haml'
+
+# User paperclip for image uploading
+gem 'paperclip'
