@@ -2,12 +2,12 @@
   .small-12.columns
     %br
     %h3
-      = @course.title
-      = link_to course_path(@course), class: 'secondary button float-right' do
+      = current_course.title
+      = link_to course_path(current_course), class: 'secondary button float-right' do
         %i.fi-eye
         Preview As Student
     %hr
-    %p= @course.description
+    %p= current_course.description
     %br
 .row
   .small-12.medium-8.medium-offset-2.columns
@@ -15,13 +15,13 @@
       %h4
         %i.fi-list
         Sections
-        = link_to new_instructor_course_section_path(@course), class: 'button float-right' do
+        = link_to new_instructor_course_section_path(current_course), class: 'button float-right' do
           %i.fi-plus
           Add A Section
       %hr
 
-      - if @course.sections.present?
-        - @course.sections.reverse.each do |section|
+      - if current_course.sections.present?
+        - current_course.sections.reverse.each do |section|
           .callout
             %h5.clearfix
               = section.title
@@ -34,4 +34,4 @@
       - else
         %p
           You have no sections in this course yet!
-          = link_to "Add one?", new_instructor_course_section_path(@course)
+          = link_to "Add one?", new_instructor_course_section_path(current_course)
