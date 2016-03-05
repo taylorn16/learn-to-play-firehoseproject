@@ -29,9 +29,15 @@
                 - section.lessons.each do |lesson|
                   .small-6.columns
                     .callout
-                      %h6= lesson.title
+                      %h6
+                        = lesson.title
+                        = link_to lesson_path(lesson), class: 'small secondary button float-right' do
+                          %i.fi-video
+                          &nbsp;Watch
                       %hr
-                      %p= lesson.subtitle
+                      %p
+                        = lesson.subtitle
+                        %br
               - else
                 %p This section has no lessons...yet!
 
