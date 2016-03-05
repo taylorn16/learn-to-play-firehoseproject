@@ -18,4 +18,22 @@
           Course Admin
 
   .small-12.medium-9.columns.course-description
-    %p= @course.description
+    %p.lead= @course.description
+    .row
+      - if @course.sections.present?
+        - @course.sections.each do |section|
+          .small-12.columns
+            %h5= section.title
+            .row
+              - if section.lessons.present?
+                - section.lessons.each do |lesson|
+                  .small-6.columns
+                    .callout
+                      %h6= lesson.title
+                      %hr
+                      %p= lesson.subtitle
+              - else
+                %p This section has no lessons...yet!
+
+      - else
+        %p This course has no sections...yet!
