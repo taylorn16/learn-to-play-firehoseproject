@@ -19,10 +19,10 @@
 
 $(function(){ $(document).foundation(); });
 
-// $(function() {
-//   $('footer').stickyFooter({
-//     content: '#page',
-//     frame: 'body',
-//     class: 'sticky-footer'
-//   });
-// });
+$(document).on('ready page:load', function() {
+  $('footer').stickyFooter({
+    content: '#page',
+    frame: 'body',
+    class: 'sticky-footer'
+  });
+});

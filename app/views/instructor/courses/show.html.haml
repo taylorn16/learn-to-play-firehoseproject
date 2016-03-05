@@ -23,7 +23,14 @@
       - if @course.sections.present?
         - @course.sections.reverse.each do |section|
           .callout
-            %h5= section.title
+            %h5.clearfix
+              = section.title
+              = link_to 'Add Lesson', new_instructor_section_lesson_path(section), class: 'secondary button float-right'
+            %hr
+            - if section.lessons.present?
+              - section.lessons.each do |lesson|
+                %p= lesson.title
+
       - else
         %p
           You have no sections in this course yet!
