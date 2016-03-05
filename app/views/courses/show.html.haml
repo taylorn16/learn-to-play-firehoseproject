@@ -4,7 +4,7 @@
     %h2= @course.title
     %br
 
-  .small-12.medium-3.columns.course-details
+  .small-12.medium-4.columns.course-details
     %h5.subheader Course Details
     %ul.vertical.menu
       %li= "Cost: #{number_to_currency(@course.cost)}"
@@ -17,7 +17,8 @@
           %i.fi-torso-business
           Course Admin
 
-  .small-12.medium-9.columns.course-description
+  .small-12.medium-8.columns.course-description
+    = image_tag @course.course_photo.url
     %p.lead= @course.description
     .row
       - if @course.sections.present?
@@ -39,7 +40,9 @@
                         = lesson.subtitle
                         %br
               - else
-                %p This section has no lessons...yet!
+                .small-12.columns
+                  %p This section has no lessons...yet!
 
       - else
-        %p This course has no sections...yet!
+        .small-12.columns
+          %p This course has no sections...yet!
