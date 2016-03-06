@@ -9,7 +9,7 @@
     %hr
     .row
       .small-12.medium-4.columns
-        = image_tag current_course.course_photo.url
+        = image_tag current_course.course_photo.url(:banner)
       .small-12.medium-8.columns
         %p= current_course.description
         %p ...

@@ -18,7 +18,7 @@
           Course Admin
 
   .small-12.medium-8.columns.course-description
-    = image_tag @course.course_photo.url
+    = image_tag @course.course_photo.url(:banner)
     %p.lead= @course.description
     .row
       - if @course.sections.present?
