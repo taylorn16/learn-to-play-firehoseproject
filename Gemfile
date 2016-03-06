@@ -65,6 +65,7 @@ gem 'haml'
 
 # User paperclip for image uploading
 gem 'paperclip'
+gem 'fog'
 
 # Figaro for storing API keys
 gem 'figaro'

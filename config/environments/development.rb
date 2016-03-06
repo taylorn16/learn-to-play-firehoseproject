@@ -32,4 +32,14 @@ LearnToPlay::Application.configure do
 
   # Image uploading with paperclip
   Paperclip.options[:command_path] = "/usr/bin/"
+
+  config.paperclip_defaults = {
+    :storage => :fog,
+    :fog_credentials => {
+      :aws_access_key_id => ENV['AWS_ACCESS_KEY'],
+      :aws_secret_access_key => ENV['AWS_SECRET_KEY'],
+      :provider => 'AWS'
+    },
+    :fog_directory => ENV['AWS_BUCKET_NAME']
+  }
 end
