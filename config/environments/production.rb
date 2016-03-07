@@ -80,12 +80,12 @@ LearnToPlay::Application.configure do
 
   # Paperclip AWS settings
   config.paperclip_defaults = {
-    :storage => :fog,
-    :fog_credentials => {
-      :aws_access_key_id => ENV['AWS_ACCESS_KEY'],
-      :aws_secret_access_key => ENV['AWS_SECRET_KEY'],
-      :provider => 'AWS'
-    },
-    :fog_directory => ENV['AWS_BUCKET_NAME']
+    :storage => :s3,
+    :s3_credentials => {
+      :access_key_id => ENV['AWS_ACCESS_KEY'],
+      :secret_access_key => ENV['AWS_SECRET_KEY'],
+      :bucket => ENV['AWS_BUCKET_NAME'],
+      :region => ENV['AWS_REGION']
+    }
   }
 end

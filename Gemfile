@@ -64,9 +64,11 @@ gem 'simple_form'
 # Try out HAML templating
 gem 'haml'
 
-# User paperclip for image uploading
+# User paperclip for image & video uploading
 gem 'paperclip'
-gem 'fog'
+# gem 'fog'
+gem 'aws-sdk', '< 2.0.0'
+gem 'paperclip-av-transcoder'
 
 # Figaro for storing API keys
 gem 'figaro'
