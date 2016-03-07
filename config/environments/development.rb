@@ -39,7 +39,7 @@ LearnToPlay::Application.configure do
       :access_key_id => ENV['AWS_ACCESS_KEY'],
       :secret_access_key => ENV['AWS_SECRET_KEY'],
       :bucket => ENV['AWS_BUCKET_NAME'],
-      :region => ENV['AWS_REGION']
+      :s3_region => ENV['AWS_REGION']
     }
   }
 end

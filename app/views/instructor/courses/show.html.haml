@@ -34,7 +34,12 @@
             %hr
             - if section.lessons.present?
               - section.lessons.each do |lesson|
-                %p= lesson.title
+                %p
+                  %strong= lesson.title
+                  %br
+                  = lesson.subtitle
+                %p
+                  = link_to "Video Link", lesson.video.url
 
       - else
         %p
