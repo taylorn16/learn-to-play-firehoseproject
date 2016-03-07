@@ -3,3 +3,6 @@
     %h2= current_lesson.title
     %hr
     %p.lead= current_lesson.subtitle
+    %video{:class => 'video-js vjs-default-skin vjs-big-play-centered vjs-fluid', :width => 'auto', :height => 'auto', :id => 'my-video', :controls => true, :preload => 'auto', :poster => '', :data => {:setup => '{}'}}
+      %source{:src => current_lesson.video.url, :type => 'video/mp4'}
+      %p.vjs-no-js To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video.
