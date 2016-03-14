@@ -16,15 +16,38 @@
 
   <body>
 
-    <% if flash[:notice].present? %>
-      <p>Will update styles before pushing live.</p>
-      <p><%= notice %></p>
-    <% end %>
+    <div class="expanded row">
 
-    <% if flash[:alert].present? %>
-      <p>Will update styles before pushing live.</p>
-      <p><%= alert %></p>
-    <% end %>
+      <div class="small-12 columns">
+        <% if flash[:notice].present? %>
+          <div class="success callout" data-closable>
+            <button class="close-button" aria-label="Close alert" type="button" data-close>
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <p><%= notice %></p>
+          </div>
+        <% end %>
+
+        <% if flash[:alert].present? %>
+          <div class="warning callout" data-closable>
+            <button class="close-button" aria-label="Close alert" type="button" data-close>
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <p><%= alert %></p>
+          </div>
+        <% end %>
+
+        <% if flash[:error].present? %>
+          <div class="warning callout" data-closable>
+            <button class="close-button" aria-label="Close alert" type="button" data-close>
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <p><strong><%= flash[:error] %></strong></p>
+          </div>
+        <% end %>
+      </div>
+
+    </div><!--.alerts-->
 
     <div class="top-bar">
       <div class="row">
