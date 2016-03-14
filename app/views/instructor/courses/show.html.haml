@@ -32,7 +32,7 @@
               = link_to 'Add Lesson', new_instructor_section_lesson_path(section), class: 'secondary button float-right'
             %hr
             - if section.lessons.present?
-              - section.lessons.each_with_index do |lesson, i|
+              - section.lessons.rank(:row_order).each_with_index do |lesson, i|
                 :erb
                   <% if i.even? %><div class="row clearfix"><% end %>
                 .medium-6.small-12.columns

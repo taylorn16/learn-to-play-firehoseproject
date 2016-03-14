@@ -75,3 +75,6 @@ gem 'figaro'
 
 # Payment processing
 gem 'stripe'
+
+# Item reordering
+gem 'ranked-model'

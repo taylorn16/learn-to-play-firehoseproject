@@ -42,7 +42,7 @@
         %h5= section.title
         .callout
           - if section.lessons.present?
-            - section.lessons.order(created_at: :asc).each_with_index do |lesson, i|
+            - section.lessons.rank(:row_order).each_with_index do |lesson, i|
               :erb
                 <% if i.even? %><div class="row clearfix"><% end %>
               .medium-6.small-12.columns
