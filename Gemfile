@@ -72,3 +72,6 @@ gem 'paperclip-av-transcoder'
 
 # Figaro for storing API keys
 gem 'figaro'
+
+# Payment processing
+gem 'stripe'
