@@ -1,48 +1,56 @@
 .row
   .small-12.columns
     %br
-    %h2= @course.title
-    %br
+    %h2.text-center= @course.title
+    %hr
 
-  .small-12.medium-4.columns.course-details
-    %h5.subheader Course Details
-    %ul.vertical.menu
-      %li= "Cost: #{number_to_currency(@course.cost)}"
-      %li= "Duration: " + ""
-      %li= "Taught by: #{@course.user.email}"
-    - if current_user && current_user == @course.user
-      %hr
-      .text-center
-        = link_to instructor_course_path(@course), :class => 'small button' do
-          %i.fi-torso-business
-          Course Admin
+  .small-12.medium-3.columns.course-details
+    .primary.callout
+      %h5 Course Details
+      %ul.vertical.menu
+        %li= "Cost: #{number_to_currency(@course.cost)}"
+        %li= "Duration: " + ""
+        %li= "Taught by: #{@course.user.email}"
+      %br
+      = link_to course_enrollments_path(@course), :class => 'small success button', :method => :post do
+        %i.fi-check
+        Enroll In This Course
+      - if current_user && current_user == @course.user
+        %hr
+        .text-center
+          = link_to instructor_course_path(@course), :class => 'small warning button' do
+            %i.fi-torso-business
+            Course Admin
 
-  .small-12.medium-8.columns.course-description
+  .small-12.medium-9.columns.course-description
     = image_tag @course.course_photo.url(:banner)
+    %hr
     %p.lead= @course.description
-    .row
-      - if @course.sections.present?
-        - @course.sections.each do |section|
-          .small-12.columns
-            %h5= section.title
-            .row
-              - if section.lessons.present?
-                - section.lessons.each do |lesson|
-                  .small-6.columns
-                    .callout
-                      %h6
-                        = lesson.title
-                        = link_to lesson_path(lesson), class: 'small secondary button float-right' do
-                          %i.fi-video
-                          &nbsp;Watch
-                      %hr
-                      %p
-                        = lesson.subtitle
-                        %br
-              - else
-                .small-12.columns
-                  %p This section has no lessons...yet!
-
-      - else
-        .small-12.columns
-          %p This course has no sections...yet!
+    %hr
+    - if @course.sections.present?
+      - @course.sections.order(created_at: :asc).each do |section|
+        %h5= section.title
+        .callout
+          - if section.lessons.present?
+            - section.lessons.order(created_at: :asc).each_with_index do |lesson, i|
+              :erb
+                <% if i.even? %><div class="row clearfix"><% end %>
+              .medium-6.small-12.columns
+                .callout.secondary
+                  %h6
+                    %strong= lesson.title
+                    = link_to lesson_path(lesson), class: 'small secondary button float-right' do
+                      %i.fi-video
+                      &nbsp;Watch
+                  %hr
+                  %p
+                    = lesson.subtitle
+                    %br
+              :erb
+                <% if i.odd? || lesson == section.lessons.last %></div><!--.row.clearfix--><% end %>
+          - else
+            .small-12.columns
+              %p This section has no lessons...yet!
+    - else
+      .small-12.columns
+        %p This course has no sections...yet!

@@ -55,20 +55,18 @@ body {
   }
 }
 
-.sticky-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: #fafafa;
-  padding: 1em 0 0 0;
-}
-
 .course-description {
   margin-bottom: 1.5em;
 }
 
 .course-details {
-  border-right: 1px solid rgb(215, 215, 215);
-  margin-bottom: 2em;
-  padding: 1em 0;
+  // border-right: 1px solid rgb(215, 215, 215);
+  // margin-bottom: 2em;
+  // padding: 1em 0;
+}
+
+footer {
+  background: #0a0a0a;
+  color: white;
+  padding: 1.5em 0;
 }
