@@ -30,7 +30,12 @@ $(function(){ $(document).foundation(); });
 $(function () {
   $('.lessons').sortable({
     update: function (evt, ui) {
-      alert(ui.item.data("lesson-id"));
+      $.ajax({
+        type: 'PATCH',
+        url: ui.item.data('update-url'),
+        dataType: 'json',
+        data: {"lesson": {"row_order_position": ui.item.index()}}
+      });
     }
   });
 });

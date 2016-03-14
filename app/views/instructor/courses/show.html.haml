@@ -36,7 +36,7 @@
             - if section.lessons.present?
               %ul.lessons.no-bullets
                 - section.lessons.rank(:row_order).each_with_index do |lesson, i|
-                  %li{:data => {"lesson-id" => lesson.id}}
+                  %li{:data => {"lesson-id" => lesson.id, "update-url" => instructor_lesson_url(lesson)}}
                     .secondary.callout
                       %h6
                         %strong= lesson.title
