@@ -38,4 +38,15 @@ $(function () {
       });
     }
   });
+
+  $('.sections').sortable({
+    update: function (evt, ui) {
+      $.ajax({
+        type: 'PATCH',
+        url: ui.item.data('update-url'),
+        dataType: 'json',
+        data: {"section": {"row_order_position": ui.item.index()}}
+      });
+    }
+  });
 });

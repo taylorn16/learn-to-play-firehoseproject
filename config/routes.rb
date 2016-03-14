@@ -11,7 +11,7 @@ LearnToPlay::Application.routes.draw do
 
   namespace :instructor do
     resources :lessons, :only => [:update]
-    resources :sections, :only => [] do
+    resources :sections, :only => [:update] do
       resources :lessons, :only => [:new, :create]
     end
 

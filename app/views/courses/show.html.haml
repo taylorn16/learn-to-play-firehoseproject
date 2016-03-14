@@ -38,7 +38,7 @@
     %p.lead= @course.description
     %hr
     - if @course.sections.present?
-      - @course.sections.order(created_at: :asc).each do |section|
+      - @course.sections.rank(:row_order).each do |section|
         %h5= section.title
         .callout
           - if section.lessons.present?
@@ -57,7 +57,7 @@
                     = lesson.subtitle
                     %br
               :erb
-                <% if i.odd? || lesson == section.lessons.last %></div><!--.row.clearfix--><% end %>
+                <% if i.odd? || i == section.lessons.size - 1 %></div><!--.row.clearfix--><% end %>
           - else
             .small-12.columns
               %p This section has no lessons...yet!

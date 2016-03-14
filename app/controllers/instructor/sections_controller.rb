@@ -1,7 +1,8 @@
 class Instructor::SectionsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :authorize_current_course
+  before_action :authorize_current_course, only: [:new, :create]
+  before_action :authorize_current_section, only: [:update]
 
   def new
     @section = Section.new
@@ -13,10 +14,22 @@ class Instructor::SectionsController < ApplicationController
     return redirect_to instructor_course_path(current_course)
   end
 
+  def update
+    # API for AJAX request
+    current_section.update_attributes(section_params)
+    return render text: 'Updated section!'
+  end
+
   private
 
   def authorize_current_course
     unless current_course.user == current_user
+      return render text: "Unauthorized", status: :unauthorized
+    end
+  end
+
+  def authorize_current_section
+    unless current_section.course.user == current_user
       return render text: "Unauthorized", status: :unauthorized
     end
   end
@@ -26,8 +39,11 @@ class Instructor::SectionsController < ApplicationController
     @current_course ||= Course.find(params[:course_id])
   end
 
-  def section_params
-    params.require(:section).permit(:title)
+  def current_section
+    @current_section ||= Section.find(params[:id])
   end
 
+  def section_params
+    params.require(:section).permit(:title, :row_order_position)
+  end
 end

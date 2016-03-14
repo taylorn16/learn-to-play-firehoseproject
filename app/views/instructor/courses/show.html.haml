@@ -24,29 +24,27 @@
           Add A Section
       %hr
 
-      - if current_course.sections.present?
-        - current_course.sections.reverse.each do |section|
-          .callout
-            %h5.clearfix
-              %strong= section.title
-              = link_to new_instructor_section_lesson_path(section), class: 'secondary button float-right' do
-                %i.fi-plus
-                Add Lesson
-            %hr
-            - if section.lessons.present?
-              %ul.lessons.no-bullets
-                - section.lessons.rank(:row_order).each_with_index do |lesson, i|
-                  %li{:data => {"lesson-id" => lesson.id, "update-url" => instructor_lesson_url(lesson)}}
-                    .secondary.callout
-                      %h6
-                        %strong= lesson.title
-                      %p
-                        = lesson.subtitle
-                        = link_to "Video Link", lesson.video.url
-
-
-
-      - else
-        %p
-          You have no sections in this course yet!
-          = link_to "Add one?", new_instructor_course_section_path(current_course)
+      %section.sections
+        - if current_course.sections.present?
+          - current_course.sections.rank(:row_order).each do |section|
+            .callout{:data => {"section-id" => section.id, "update-url" => instructor_section_url(section)}}
+              %h5.clearfix
+                %strong= section.title
+                = link_to new_instructor_section_lesson_path(section), class: 'secondary button float-right' do
+                  %i.fi-plus
+                  Add Lesson
+              %hr
+              - if section.lessons.present?
+                %ul.lessons.no-bullets
+                  - section.lessons.rank(:row_order).each_with_index do |lesson, i|
+                    %li{:data => {"lesson-id" => lesson.id, "update-url" => instructor_lesson_url(lesson)}}
+                      .secondary.callout
+                        %h6
+                          %strong= lesson.title
+                        %p
+                          = lesson.subtitle
+                          = link_to "Video Link", lesson.video.url
+        - else
+          %p
+            You have no sections in this course yet!
+            = link_to "Add one?", new_instructor_course_section_path(current_course)
