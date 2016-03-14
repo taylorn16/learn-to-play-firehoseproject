@@ -13,6 +13,7 @@
  *= require foundation-icons
 
  *= require_tree .
+ *= require jquery-ui
  */
 
 body {
@@ -70,3 +71,5 @@ footer {
   color: white;
   padding: 1.5em 0;
 }
+
+.no-bullets{list-style-type: none !important}

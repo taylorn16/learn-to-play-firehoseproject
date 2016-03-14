@@ -15,13 +15,22 @@
 //= require foundation
 //= require jquery.stickyfooter
 //= require_tree .
+//= require jquery-ui
 
 $(function(){ $(document).foundation(); });
 
-$(document).on('ready page:load', function() {
-  $('footer').stickyFooter({
-    content: '#page',
-    frame: 'body',
-    class: 'sticky-footer'
+// $(document).on('ready page:load', function() {
+//   $('footer').stickyFooter({
+//     content: '#page',
+//     frame: 'body',
+//     class: 'sticky-footer'
+//   });
+// });
+
+$(function () {
+  $('.lessons').sortable({
+    update: function (evt, ui) {
+      alert(ui.item.data("lesson-id"));
+    }
   });
 });

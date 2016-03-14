@@ -28,24 +28,22 @@
         - current_course.sections.reverse.each do |section|
           .callout
             %h5.clearfix
-              = section.title
-              = link_to 'Add Lesson', new_instructor_section_lesson_path(section), class: 'secondary button float-right'
+              %strong= section.title
+              = link_to new_instructor_section_lesson_path(section), class: 'secondary button float-right' do
+                %i.fi-plus
+                Add Lesson
             %hr
             - if section.lessons.present?
-              - section.lessons.rank(:row_order).each_with_index do |lesson, i|
-                :erb
-                  <% if i.even? %><div class="row clearfix"><% end %>
-                .medium-6.small-12.columns
-                  %p
-                    %strong= lesson.title
-                    %br
-                    = lesson.subtitle
-                  %p
-                    = link_to lesson.video.url do
-                      %i.fi-video
-                      Video Link
-                :erb
-                  <% if i.odd? || lesson == section.lessons.last %></div><!--.row.clearfix--><% end %>
+              %ul.lessons.no-bullets
+                - section.lessons.rank(:row_order).each_with_index do |lesson, i|
+                  %li{:data => {"lesson-id" => lesson.id}}
+                    .secondary.callout
+                      %h6
+                        %strong= lesson.title
+                      %p
+                        = lesson.subtitle
+                        = link_to "Video Link", lesson.video.url
+
 
 
       - else
