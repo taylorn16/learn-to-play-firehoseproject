@@ -17,18 +17,19 @@
   .small-12.medium-8.medium-offset-2.columns
     .callout
       %h4
-        %i.fi-list
         Sections
+        %small
+          %em Drag and drop to reorder sections and lessons
         = link_to new_instructor_course_section_path(current_course), class: 'button float-right' do
           %i.fi-plus
           Add A Section
       %hr
-
       %section.sections
         - if current_course.sections.present?
           - current_course.sections.rank(:row_order).each do |section|
             .callout{:data => {"section-id" => section.id, "update-url" => instructor_section_url(section)}}
               %h5.clearfix
+                %i.fi-list
                 %strong= section.title
                 = link_to new_instructor_section_lesson_path(section), class: 'secondary button float-right' do
                   %i.fi-plus
@@ -40,6 +41,7 @@
                     %li{:data => {"lesson-id" => lesson.id, "update-url" => instructor_lesson_url(lesson)}}
                       .secondary.callout
                         %h6
+                          %i.fi-list
                           %strong= lesson.title
                         %p
                           = lesson.subtitle
