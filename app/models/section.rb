@@ -3,7 +3,7 @@ class Section < ActiveRecord::Base
   include RankedModel
 
   belongs_to :course
-  has_many :lessons
+  has_many :lessons, dependent: :destroy
   ranks :row_order, :with_same => :course_id
 
   def prev_section

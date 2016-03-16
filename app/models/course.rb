@@ -1,8 +1,8 @@
 class Course < ActiveRecord::Base
   # Database relationships
   belongs_to :user
-  has_many :sections
-  has_many :enrollments
+  has_many :sections, dependent: :destroy
+  has_many :enrollments, dependent: :destroy
 
   # Validations
   validates :title, presence: true, length: {minimum: 10, maximum: 160}
