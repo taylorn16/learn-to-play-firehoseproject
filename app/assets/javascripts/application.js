@@ -28,6 +28,7 @@ $(function(){ $(document).foundation(); });
 // });
 
 $(function () {
+  // Use jQuery UI to make lessons and sections sortable on the instructor views
   $('.lessons').sortable({
     update: function (evt, ui) {
       $.ajax({
@@ -38,7 +39,6 @@ $(function () {
       });
     }
   });
-
   $('.sections').sortable({
     update: function (evt, ui) {
       $.ajax({
@@ -48,5 +48,15 @@ $(function () {
         data: {"section": {"row_order_position": ui.item.index()}}
       });
     }
+  });
+
+  // Dynamically update the new lesson modal's form target URL
+  var lessonModalForm = $('#createLessonModalForm');
+  $('button.new-lesson-button').on('click', function (evt) {
+    lessonModalForm.attr('action', $(this).data('action-url'));
+  });
+  // Reset the URL if the modal is closed
+  $('#createLessonModal').on('closed.zf.reveal', function (evt) {
+    lessonModalForm.attr('action', '#');
   });
 });

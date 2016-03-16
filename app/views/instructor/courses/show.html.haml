@@ -20,7 +20,10 @@
         Sections
         %small
           %em Drag and drop to reorder sections and lessons
-        = link_to "#", "class" => 'button float-right', "data-open" => "createSectionModal"  do
+        -# = link_to "#", "class" => 'button float-right', "data-open" => "createSectionModal"  do
+        -#   %i.fi-plus
+        -#   Add A Section
+        %button.button.float-right{'data-open' => 'createSectionModal'}
           %i.fi-plus
           Add A Section
       %hr
@@ -31,7 +34,10 @@
               %h5.clearfix
                 %i.fi-list
                 %strong= section.title
-                = link_to new_instructor_section_lesson_path(section), class: 'secondary button float-right' do
+                -# = link_to new_instructor_section_lesson_path(section), class: 'secondary button float-right' do
+                -#   %i.fi-plus
+                -#   Add Lesson
+                %button.secondary.button.float-right.new-lesson-button{"data-open" => "createLessonModal", "data-action-url" => instructor_section_lessons_url(section)}
                   %i.fi-plus
                   Add Lesson
               %hr
@@ -56,6 +62,17 @@
     %span{"aria-hidden" => true} &times;
   %h3 Create a New Section
   %hr
-  = simple_form_for @section, url: instructor_course_sections_path(current_course) do |form|
+  = simple_form_for @section, url: instructor_course_sections_path(current_course), html: {id: 'createSectionModalForm'} do |form|
     = form.input :title
     = form.submit "Create Section", class: 'button'
+
+.reveal#createLessonModal{"data-reveal" => true, "data-animate" => "fade-out scale-in-up"}
+  %button.close-button{"data-close" => true, "aria-label" => "Close modal", "type" => "button"}
+    %span{"aria-hidden" => true} &times;
+  %h3 Create a New Lesson
+  %hr
+  = simple_form_for(@lesson, url: '#', html: {id: 'createLessonModalForm'}) do |form|
+    = form.input :title
+    = form.input :subtitle
+    = form.input :video
+    = form.submit "Add Lesson", class: 'secondary button'

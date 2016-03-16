@@ -1,9 +1,0 @@
-.row
-  .small-12.medium-6.medium-offset-3.columns
-    .callout.form
-      %h3 Add A New Lesson
-      = simple_form_for(@lesson, url: instructor_section_lessons_path(current_section)) do |form|
-        = form.input :title
-        = form.input :subtitle
-        = form.input :video
-        = form.submit "Add Lesson", class: 'secondary button'
