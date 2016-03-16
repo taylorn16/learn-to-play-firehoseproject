@@ -3,7 +3,7 @@
     %br
     %h2
       = current_lesson.title
-      .button-group.float-right
+      .small.button-group.float-right
         - if current_lesson.prev_lesson
           = link_to lesson_path(current_lesson.prev_lesson), class: 'secondary small button' do
             %i.fi-arrow-left

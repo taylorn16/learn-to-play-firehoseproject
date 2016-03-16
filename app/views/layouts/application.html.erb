@@ -111,15 +111,30 @@
       <div class="row clearfix">
         <div class="small-6 medium-3 columns">
           <h5>Teachers</h5>
+          <ul class="no-bullet">
+            <li><%= link_to 'Teach A Course', new_instructor_course_path %></li>
+            <li><%= link_to 'My Dashboard', dashboard_path %></li>
+          </ul>
         </div>
         <div class="small-6 medium-3 columns">
           <h5>About</h5>
+          <ul class="no-bullet">
+            <li><%= link_to 'Team', '#' %></li>
+            <li><%= link_to 'Careers', '#' %></li>
+            <li><%= link_to 'Privacy Policy', '#' %></li>
+          </ul>
         </div>
         <div class="small-6 medium-3 columns">
           <h5>Contact</h5>
+          <p>
+            Proudly <em>&lt;hacked/&gt;</em> by Nick Taylor in Newark, DE. Still learning Ruby on Rails!
+          </p>
         </div>
         <div class="small-6 medium-3 columns">
           <h5>Copyright</h5>
+          <p>
+            &copy; Copyright Nick Taylor 2016. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
