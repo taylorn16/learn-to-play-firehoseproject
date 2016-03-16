@@ -20,7 +20,7 @@
         Sections
         %small
           %em Drag and drop to reorder sections and lessons
-        = link_to new_instructor_course_section_path(current_course), class: 'button float-right' do
+        = link_to "#", "class" => 'button float-right', "data-open" => "createSectionModal"  do
           %i.fi-plus
           Add A Section
       %hr
@@ -50,3 +50,12 @@
           %p
             You have no sections in this course yet!
             = link_to "Add one?", new_instructor_course_section_path(current_course)
+
+.reveal#createSectionModal{"data-reveal" => true, "data-animate" => "fade-out scale-in-up"}
+  %button.close-button{"data-close" => true, "aria-label" => "Close modal", "type" => "button"}
+    %span{"aria-hidden" => true} &times;
+  %h3 Create a New Section
+  %hr
+  = simple_form_for @section, url: instructor_course_sections_path(current_course) do |form|
+    = form.input :title
+    = form.submit "Create Section", class: 'button'
