@@ -1,7 +1,8 @@
 LearnToPlay::Application.routes.draw do
 
-  devise_for :users
   root 'static_pages#index'
+  devise_for :users
+  get 'dashboard' => 'dashboards#show'
 
   resources :courses, :only => [:index, :show] do
     resources :enrollments, :only => :create

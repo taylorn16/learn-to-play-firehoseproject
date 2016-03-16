@@ -1,0 +1,43 @@
+.row
+  .small-12.columns
+    %br
+    %h2 Dashboard!
+    %hr
+
+
+    %h3.subheader
+      Enrolled Courses
+      %span.success.label
+        %strong= "#{current_user.enrolled_courses.count}"
+    - if current_user.enrolled_courses.present?
+      - current_user.enrolled_courses.each do |course|
+        .callout.clearfix
+          .row
+            .small-12.medium-4.columns
+              = image_tag course.course_photo.url(:banner)
+            .small-12.medium-8.columns
+              %h4= link_to course.title, course_path(course)
+              %p= course.description
+              = link_to "Go To Course", course_path(course), class: 'primary button'
+    - else
+      %p You're not enrolled in any courses... yet!
+
+
+    %h3.subheader
+      Courses I'm Teaching
+      %span.secondary.label
+        %strong= "#{current_user.courses.count}"
+    - if current_user.courses.present?
+      - current_user.courses.each do |course|
+        .callout.clearfix
+          .row
+            .small-12.medium-4.columns
+              = image_tag course.course_photo.url(:banner)
+            .small-12.medium-8.columns
+              %h4= link_to course.title, instructor_course_path(course)
+              %p= course.description
+              .button-group
+                = link_to "Preview As Student", course_path(course), class: 'secondary button'
+                = link_to "Course Admin", instructor_course_path(course), class: 'warning button'
+    - else
+      %p You're not teaching any courses... yet!
