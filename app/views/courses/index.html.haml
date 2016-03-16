@@ -1,14 +1,16 @@
 .row
   .small-12.columns
-    %h2.text-center Learn Something Today
     %br
+    %h2.text-center Learn Something Today
+    %hr
     - @courses.each do |course|
       .media-object
-        .media-object-section.middle
+        .media-object-section.top
           .thumbnail
-            = image_tag "http://placehold.it/150x150"
+            = image_tag course.course_photo.url(:thumb)
         .media-object-section
           %h4= link_to course.title, course_path(course)
           %p= course.description
           %p
-            = link_to 'Enroll Now', course_path(course), :class => 'large secondary button'
+            = link_to 'Enroll Now', course_path(course), :class => 'secondary button'
+      %hr

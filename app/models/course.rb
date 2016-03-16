@@ -10,7 +10,7 @@ class Course < ActiveRecord::Base
   validates :cost, presence: true, numericality: {greater_than_or_equal_to: 0}
 
   # Paperclip
-  has_attached_file :course_photo, styles: { banner: "800x350#", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
+  has_attached_file :course_photo, styles: { banner: "800x350#", thumb: "150x150#" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :course_photo, content_type: /\Aimage\/.*\Z/
 
   def free?
