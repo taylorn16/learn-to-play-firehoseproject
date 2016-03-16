@@ -3,6 +3,9 @@ LearnToPlay::Application.routes.draw do
   root 'static_pages#index'
   devise_for :users
   get 'dashboard' => 'dashboards#show'
+  get 'privacy' => 'static_pages#privacy'
+  get 'team' => 'static_pages#team'
+  get 'careers' => 'static_pages#careers'
 
   resources :courses, :only => [:index, :show] do
     resources :enrollments, :only => :create

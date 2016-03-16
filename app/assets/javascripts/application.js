@@ -19,13 +19,13 @@
 
 $(function(){ $(document).foundation(); });
 
-// $(document).on('ready page:load', function() {
-//   $('footer').stickyFooter({
-//     content: '#page',
-//     frame: 'body',
-//     class: 'sticky-footer'
-//   });
-// });
+$(document).ready( function() {
+  $('footer').stickyFooter({
+    content: '#page',
+    frame: 'body',
+    class: 'sticky-footer'
+  });
+});
 
 $(function () {
   // Use jQuery UI to make lessons and sections sortable on the instructor views
