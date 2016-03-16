@@ -24,7 +24,8 @@
         - else
           = form_tag course_enrollments_path(@course) do
             %script{src: 'https://checkout.stripe.com/checkout.js', class: 'stripe-button', data: {key: Rails.configuration.stripe[:publishable_key], description: "#{@course.title} - #{number_to_currency @course.cost}", amount: "#{(@course.cost*100).to_i}", locale: 'auto'}}
-      - else
+
+      - if ! current_user
         = link_to "Sign Up To Enroll", new_user_registration_path, :class => 'primary button'
 
       - if current_user && current_user == @course.user

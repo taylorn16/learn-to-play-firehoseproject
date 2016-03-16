@@ -1,6 +1,18 @@
 .row
   .small-12.columns
-    %h2= current_lesson.title
+    %br
+    %h2
+      = current_lesson.title
+      .button-group.float-right
+        - if current_lesson.prev_lesson
+          = link_to lesson_path(current_lesson.prev_lesson), class: 'secondary small button' do
+            %i.fi-arrow-left
+            Previous Lesson
+        = link_to 'Course Dashboard', course_path(current_lesson.section.course), class: 'primary small button'
+        - if current_lesson.next_lesson
+          = link_to lesson_path(current_lesson.next_lesson), class: 'secondary small button' do
+            Next Lesson
+            %i.fi-arrow-right
     %hr
     %p.lead= current_lesson.subtitle
     %video{:class => 'video-js vjs-default-skin vjs-big-play-centered vjs-fluid', :width => 640, :height => 480, :id => 'my-video', :controls => true, :preload => 'auto', :poster => '', :data => {:setup => '{}'}}

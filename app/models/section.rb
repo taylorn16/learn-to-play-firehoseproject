@@ -6,4 +6,12 @@ class Section < ActiveRecord::Base
   has_many :lessons
   ranks :row_order, :with_same => :course_id
 
+  def prev_section
+    self.course.sections.where('row_order < ?', self.row_order).rank(:row_order).last
+  end
+
+  def next_section
+    self.course.sections.where('row_order > ?', self.row_order).rank(:row_order).first
+  end
+
 end
