@@ -34,9 +34,6 @@
               %h5.clearfix
                 %i.fi-list
                 %strong= section.title
-                -# = link_to new_instructor_section_lesson_path(section), class: 'secondary button float-right' do
-                -#   %i.fi-plus
-                -#   Add Lesson
                 %button.secondary.button.float-right.new-lesson-button{"data-open" => "createLessonModal", "data-action-url" => instructor_section_lessons_url(section)}
                   %i.fi-plus
                   Add Lesson
@@ -55,7 +52,7 @@
         - else
           %p
             You have no sections in this course yet!
-            = link_to "Add one?", new_instructor_course_section_path(current_course)
+            = link_to "Add one?", '#', "data-open" => "createSectionModal"
 
 .reveal#createSectionModal{"data-reveal" => true, "data-animate" => "fade-out scale-in-up"}
   %button.close-button{"data-close" => true, "aria-label" => "Close modal", "type" => "button"}
