@@ -16,7 +16,7 @@
             %span.success.label
               %strong You're Enrolled!
 
-      - unless current_user && current_user.enrolled_in?(@course)
+      - if current_user && ! current_user.enrolled_in?(@course)
         - if @course.free?
           = link_to course_enrollments_path(@course), :class => 'success button', :method => :post do
             %i.fi-check
@@ -24,6 +24,8 @@
         - else
           = form_tag course_enrollments_path(@course) do
             %script{src: 'https://checkout.stripe.com/checkout.js', class: 'stripe-button', data: {key: Rails.configuration.stripe[:publishable_key], description: "#{@course.title} - #{number_to_currency @course.cost}", amount: "#{(@course.cost*100).to_i}", locale: 'auto'}}
+      - else
+        = link_to "Sign Up To Enroll", new_user_registration_path, :class => 'primary button'
 
       - if current_user && current_user == @course.user
         %hr
