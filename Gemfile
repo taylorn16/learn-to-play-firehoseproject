@@ -70,7 +70,6 @@ gem 'paperclip'
 # gem 'fog'
 gem 'aws-sdk', '< 2.0.0'
 gem 'paperclip-av-transcoder'
-gem "paperclip-ffmpeg", "~> 1.2.0"
 
 # Figaro for storing API keys
 gem 'figaro'
