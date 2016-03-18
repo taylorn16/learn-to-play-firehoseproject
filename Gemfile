@@ -37,6 +37,7 @@ group :production do
 
   gem 'rmagick'
   gem 'rails_12factor'
+  gem 'unicorn'
 
 end
 
